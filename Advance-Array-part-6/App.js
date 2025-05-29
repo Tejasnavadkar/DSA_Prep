@@ -120,3 +120,83 @@ arr[0] = last
 
 }
 console.log(arr)
+
+//Q-4 // remove the duplicates from array (brute force) n^2
+
+let arr = [1,2,3,4,4,5,5]
+
+for(let i=0;i<arr.length;i++){
+    for(let j=0;j<arr.length;j++){
+        if(i===j) continue
+        if(arr[i] === arr[j]){
+            arr.splice(i,1)
+        }
+    }
+}
+console.log(arr)
+
+// o/p [ 1, 2, 3, 4, 5 ]
+
+// remove duplicates from sorted array [leetcode]
+
+  var removeDuplicates = function(nums) {
+     let i = 0
+     let k = 1
+     for(let j =1;j<=nums.length - 1;j++){
+     if(nums[i] !== nums[i+1]){
+         nums[k] = nums[i+1]
+         k++
+     }
+     i++
+ }
+    return k
+};
+removeDuplicates([1,2,3,4,4,5,5,5,6])
+
+// o/p  6 original numbers
+// [
+//   1, 2, 3, 4, 5,
+//   6, 5, 5, 6
+// ]
+
+
+//Q-5] Merge sorted array
+
+let arr1 = [2,5,6] //i
+let arr2 = [1,3,4,8]//j
+let temp = new Array(arr1.length + arr2.length) // k
+// here we use 3 pointers
+let i = 0
+let j = 0
+let k = 0
+while(i<arr1.length && j<arr2.length){
+    if(arr1[i] < arr2[j]){
+        temp[k] = arr1[i]
+        k++
+        i++
+    }else{
+        temp[k] = arr2[j]
+        k++
+        j++
+    }
+}
+
+while(i<arr1.length){
+    temp[k] = arr1[i]
+    k++
+    i++
+}
+
+while(j<arr2.length){
+    temp[k] = arr2[j]
+    k++
+    j++
+}
+
+console.log(temp)
+
+// o/p 
+// [
+//   1, 2, 3, 4,
+//   5, 6, 8
+// ]
